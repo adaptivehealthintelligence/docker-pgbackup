@@ -1,0 +1,16 @@
+sudo: required
+matrix:
+  fast_finish: true
+services:
+- docker
+before_install:
+script:
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- chmod 755 ~/.docker
+- chmod 644 ~/.docker/config.json
+- ./travis-build.sh
+
+env:
+  global:
+    - DOCKER_USERNAME: gbowland
+    - secure: "pUW0wLhwVCEE2XU7zUkuoEA/893/D23ctnoI9nA92Tep+XvABrg6tx2bYZ3CAisj6zYjzKyKK99tuRNyN/hfb2AoH+L8yPm/eA2ZUk2GMD+6mdOKVeZQ9E1sXCfcreKD4NV0mMJmPlYrrOW3WMVXnoW+jXgCFgj74VjpT3jZr1pYXn8BPFRd0EppalYLgXitjSjx0VUpPu6gix5zXmlG4bcJBIFpSvyqQ/JvIlOHMRoL6XpSmxl+SFAzskMw9ramd/uSu3jc0jR3aRmsDJAiXWO/l04nfanRfMoLbldv7HkaELYILZ59ZaH7BuXA7zdNLBcT/36zoyB5Ko3MHgK+Yc7ekXAdSfhS9348oDefBDar56B01FamRqoN77pIb5O61Nlsja8idbORlTBBywl7Sf2gPjSGyBP2f5SMDrldRGlPVDqGx5MDpny9B6Cg2WfvKfCCyPBf+bOaDR06jDa6kahDhNRf8ymm0Z3zPB+lN2hIqjz83MxCTIWFvBHi+P2gX/iS2jjzfYhooqbTQnS5WNvOOUpXmGCxMvZcZsw5nUCqFHHGJ0lenPYEVxz3PhRO++dn6FLa3idsXqDxFedtwpu4UWb+tSy73iK/OsSr6CDJvn5NMZxbmkzGYvO9zdja8C7Z92S9Nv4KPEZIYdOh9WWzMrwt4WyS6NizyLMlTeU="

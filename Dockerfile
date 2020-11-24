@@ -1,6 +1,6 @@
 #
-FROM postgres:10
-MAINTAINER https://github.com/muccg/
+FROM postgis/postgis:10-2.5
+MAINTAINER https://github.com/adaptivehealthintelligence/
 
 RUN mkdir /data \
   && chown postgres:postgres /data
